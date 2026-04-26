@@ -1,9 +1,9 @@
-import Header from '@/components/Header'
-import TabBar from '@/components/TabBar'
-import Editor from '@/components/Editor'
-import Output from '@/components/Output'
-import FileDrawer from '@/components/FileDrawer'
-import MobileKeys from '@/components/MobileKeys'
+import Header from "@/components/header";
+import TabBar from "@/components/tab-bar";
+import Editor from "@/components/editor";
+import Output from "@/components/output";
+import FileDrawer from "@/components/file-drawer";
+import MobileKeys from "@/components/mobile-keys";
 
 export default function App() {
   return (
@@ -17,5 +17,5 @@ export default function App() {
       </div>
       <MobileKeys />
     </div>
-  )
+  );
 }

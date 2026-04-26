@@ -25,6 +25,7 @@ type Store = {
   tabs: Tab[];
   activeTabId: string | null;
   openTab: (tab: Tab) => void;
+  newTab: (path: string) => void;
   closeTab: (id: string) => void;
   setActiveTab: (id: string) => void;
   updateTabContent: (id: string, content: string) => void;
@@ -72,6 +73,18 @@ export const useStore = create<Store>()(
           return;
         }
         set((s) => ({ tabs: [...s.tabs, tab], activeTabId: tab.id }));
+      },
+
+      newTab: (path) => {
+        const id = crypto.randomUUID();
+        const content =
+          path === "main.go"
+            ? DEFAULT_CODE
+            : `package piscine\n\nimport "github.com/01-edu/z01"\n\nfunc ${path.replace(/\.go$/, "")}() {\n\tz01.PrintRune('\\n')\n}\n`;
+        set((s) => ({
+          tabs: [...s.tabs, { id, path, content, dirty: false }],
+          activeTabId: id,
+        }));
       },
 
       closeTab: (id) => {
