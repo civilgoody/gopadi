@@ -21,6 +21,9 @@ export function injectZ01(code: string): string {
 
   code = code.replaceAll('z01.PrintRune(', 'z01PrintRune(')
   code = code.replace(/\s*"github\.com\/01-edu\/z01"\n?/g, '\n')
+  // Remove empty import blocks/statements left after stripping z01
+  code = code.replace(/import\s*\(\s*\)/g, '')
+  code = code.replace(/^import\s*$/m, '')
 
   const hasImportBlock = /import\s*\(/.test(code)
   const hasSingleImport = /import\s+"/.test(code)
