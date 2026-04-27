@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import Header from "@/components/header";
 import TabBar from "@/components/tab-bar";
 import Editor from "@/components/editor";
@@ -16,6 +17,7 @@ export default function App() {
         <Output />
       </div>
       <MobileKeys />
+      <Analytics />
     </div>
   );
 }
